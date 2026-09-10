@@ -1,0 +1,11 @@
+{
+  "files": [],
+  "references": [
+    { "path": "packages/schema" },
+    { "path": "packages/config" },
+    { "path": "packages/logger" },
+    { "path": "packages/db" },
+    { "path": "packages/pipeline" },
+    { "path": "backend" }
+  ]
+}

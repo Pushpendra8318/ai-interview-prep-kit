@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(109, 90, 235, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(236, 72, 153, 0.06), transparent);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @apply font-display;
+}
+
+*:focus-visible {
+  @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  @apply inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-150 active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50 disabled:active:scale-100;
+}
+.btn-primary {
+  @apply btn bg-brand-600 text-white shadow-glow hover:bg-brand-700;
+}
+.btn-secondary {
+  @apply btn border border-slate-200 bg-white text-slate-700 shadow-sm hover:border-slate-300 hover:bg-slate-50;
+}
+.btn-danger {
+  @apply btn border border-red-200 bg-white text-red-600 hover:border-red-300 hover:bg-red-50;
+}
+.btn-ghost {
+  @apply btn text-slate-500 hover:bg-slate-100 hover:text-slate-800;
+}
+
+/* ---------- Surfaces ---------- */
+.card {
+  @apply rounded-2xl border border-slate-200/70 bg-white p-5 shadow-card transition-shadow duration-200;
+}
+.card-hover {
+  @apply hover:-translate-y-0.5 hover:border-brand-200 hover:shadow-soft;
+}
+.panel {
+  @apply rounded-2xl border border-slate-200/70 bg-white/70 backdrop-blur-sm;
+}
+
+/* ---------- Forms ---------- */
+.input {
+  @apply w-full rounded-lg border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-slate-900 shadow-sm transition-colors placeholder:text-slate-400 focus-visible:border-brand-400;
+}
+.label {
+  @apply mb-1.5 block text-sm font-medium text-slate-700;
+}
+
+/* ---------- Badges ---------- */
+.badge {
+  @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+
+/* ---------- Misc ---------- */
+.brand-text {
+  @apply bg-brand-gradient bg-clip-text text-transparent;
+}
+.section-fade {
+  @apply animate-fade-in;
+}
+.section-slide {
+  @apply animate-slide-up;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  @apply rounded-full bg-slate-300;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
