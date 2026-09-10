@@ -1,13 +1,19 @@
 # Render Blueprint for the API (backend/). Frontend deploys separately to Vercel - see README.
 # https://render.com/docs/blueprint-spec
+#
+# rootDir is deliberately the repo root, not "backend": npm workspaces (-w)
+# reliably resolves relative to the workspace root package.json, and running
+# from a subdirectory with --prefix tricks is flaky across npm/Render
+# versions ("No workspaces found: --workspace=backend"). `npm run <script> -w
+# backend` from the root runs the script with cwd set to backend/, so
+# relative paths like `node dist/server.js` still resolve correctly.
 services:
   - type: web
     name: ai-interview-prep-kit-api
     runtime: node
     plan: free
-    rootDir: backend
-    buildCommand: npm install --prefix .. && npm run build --prefix .. -w backend
-    startCommand: npm start
+    buildCommand: npm install && npm run build -w backend
+    startCommand: npm start -w backend
     envVars:
       - key: NODE_ENV
         value: production
