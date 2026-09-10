@@ -12,7 +12,12 @@ services:
     name: ai-interview-prep-kit-api
     runtime: node
     plan: free
-    buildCommand: npm install && npm run build -w backend
+    # --include=dev is required here: NODE_ENV=production is set below (for
+    # the running server), but Render applies env vars during the build step
+    # too, and npm skips all devDependencies (typescript, @types/*, vitest,
+    # ts-node, etc.) whenever NODE_ENV=production is set unless told
+    # otherwise - which breaks `tsc -b` before the app ever runs.
+    buildCommand: npm install --include=dev && npm run build -w backend
     startCommand: npm start -w backend
     envVars:
       - key: NODE_ENV
