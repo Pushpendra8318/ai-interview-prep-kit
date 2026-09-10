@@ -26,4 +26,11 @@ export default tseslint.config(
       'no-console': 'off',
     },
   },
+  {
+    // Config files run directly under Node, not through the app's own TS setup.
+    files: ['**/*.config.mjs', '**/*.config.js'],
+    languageOptions: {
+      globals: { process: 'readonly' },
+    },
+  },
 );

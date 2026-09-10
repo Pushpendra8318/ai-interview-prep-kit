@@ -1,4 +1,7 @@
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
+// Requests go to this same origin (relative paths) and are transparently
+// proxied to the real backend by the rewrite in next.config.mjs - see the
+// comment there for why (avoids the session cookie being a blockable
+// third-party cookie).
 
 export class ApiClientError extends Error {
   constructor(
@@ -12,7 +15,7 @@ export class ApiClientError extends Error {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${API_URL}${path}`, {
+  const res = await fetch(path, {
     ...init,
     credentials: 'include',
     headers: { 'Content-Type': 'application/json', ...init?.headers },
